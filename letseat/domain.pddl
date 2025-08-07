@@ -22,7 +22,7 @@
         (arm-empty)
         (path ?location1 - location ?location2 - location)
         (eating ?unicorn - beast ?cupcake - cupcake)
-        (is_plate ?x - plate)
+        (is_plate ?x - loc)
     )
 
     ;define actions here
@@ -76,15 +76,15 @@
     (:action eat
         :parameters (?unicorn - beast
                      ?cupcake - locatable
-                     ?plate - location
+                     ?loc - location
         )
         :precondition(and
-            (on ?unicorn ?plate)
-            (on ?cupcake ?plate)
-            (is_plate ?plate)
+            (on ?unicorn ?loc)
+            (on ?cupcake ?loc)
+            (is_plate ?loc)
         )
         :effect(and
-            (not (on ?cupcake ?plate))
+            (not (on ?cupcake ?loc))
             (eating ?unicorn ?cupcake)
         )
     )

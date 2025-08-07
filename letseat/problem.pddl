@@ -1,8 +1,8 @@
 (define (problem letseat-simple) (:domain letseat)
     (:objects
         arm - robot
-        strawberry_cupcake - cupcake
-        raspberry_cupcake - cupcake
+        peenar_alex - cupcake
+        peenar_luis - cupcake
         table - location
         plate1 - location
         plate2 - location
@@ -12,8 +12,8 @@
     (:init
         ;todo: put the initial state's facts and numeric values here
         (on arm table)
-        (on strawberry_cupcake table)
-        (on raspberry_cupcake table)
+        (on peenar_alex table)
+        (on peenar_luis table)
         (on larry table)
         
         (arm-empty)
@@ -36,9 +36,9 @@
         ; (on strawberry_cupcake plate1)
         ; (on raspberry_cupcake plate2)
         ; (on larry plate1)
-        (eating larry strawberry_cupcake)
+        (eating larry peenar_alex)
         ; (on larry plate2)
-        (eating larry raspberry_cupcake)
+        (eating larry peenar_luis)
     ))
 
     ;un-comment the following line if metric is needed
