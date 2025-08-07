@@ -26,13 +26,18 @@
 
         (path plate2 table)
         (path plate2 plate1)
+
+        (is_plate plate1)
+        (is_plate plate2)
     )
 
     (:goal (and
         ;todo: put the goal condition here
-        (on strawberry_cupcake plate1)
-        (on raspberry_cupcake plate2)
+        ; (on strawberry_cupcake plate1)
+        ; (on raspberry_cupcake plate2)
+        ; (on larry plate1)
         (eating larry strawberry_cupcake)
+        ; (on larry plate2)
         (eating larry raspberry_cupcake)
     ))
 

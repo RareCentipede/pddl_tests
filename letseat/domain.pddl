@@ -3,7 +3,7 @@
 (define (domain letseat)
 
     ;remove requirements that are not needed
-    (:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
+    (:requirements :typing)
 
     (:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
         location locatable - object
@@ -21,8 +21,8 @@
         (holding ?arm - locatable ?cupcake - locatable)
         (arm-empty)
         (path ?location1 - location ?location2 - location)
-        (eating ?unicorn - beast ?cupcake - locatable)
-        (on-plate ?cupcake - cupcake ?plate - plate)
+        (eating ?unicorn - beast ?cupcake - cupcake)
+        (is_plate ?x - plate)
     )
 
     ;define actions here
@@ -60,7 +60,7 @@
     )
 
     (:action move
-        :parameters (?agent - bot
+        :parameters (?agent - moveable
                      ?from - location
                      ?to - location)
         :precondition (and
@@ -81,6 +81,7 @@
         :precondition(and
             (on ?unicorn ?plate)
             (on ?cupcake ?plate)
+            (is_plate ?plate)
         )
         :effect(and
             (not (on ?cupcake ?plate))
