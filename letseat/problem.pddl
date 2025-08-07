@@ -1,24 +1,39 @@
 (define (problem letseat-simple) (:domain letseat)
     (:objects
         arm - robot
-        cupcake - cupcake
+        strawberry_cupcake - cupcake
+        raspberry_cupcake - cupcake
         table - location
-        plate - location
+        plate1 - location
+        plate2 - location
+        larry - beast
     )
 
     (:init
         ;todo: put the initial state's facts and numeric values here
         (on arm table)
-        (on cupcake table)
-        (arm-empty)
-        (path table plate)
+        (on strawberry_cupcake table)
+        (on raspberry_cupcake table)
+        (on larry table)
         
+        (arm-empty)
+
+        (path table plate1)
+        (path table plate2)
+
+        (path plate1 table)
+        (path plate1 plate2)
+
+        (path plate2 table)
+        (path plate2 plate1)
     )
 
     (:goal (and
         ;todo: put the goal condition here
-        (on cupcake plate)
-        
+        (on strawberry_cupcake plate1)
+        (on raspberry_cupcake plate2)
+        (eating larry strawberry_cupcake)
+        (eating larry raspberry_cupcake)
     ))
 
     ;un-comment the following line if metric is needed

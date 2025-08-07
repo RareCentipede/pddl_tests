@@ -7,8 +7,10 @@
 
     (:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
         location locatable - object
-        bot cupcake - locatable
+        moveable cupcake plate - locatable
+        bot beast - moveable
         robot - bot
+        unicorn - beast
     )
 
     ; un-comment following line if constants are needed
@@ -18,21 +20,23 @@
         (on ?obj - locatable ?loc - location)
         (holding ?arm - locatable ?cupcake - locatable)
         (arm-empty)
-        (path ?location1 - location ? location2 - location)
+        (path ?location1 - location ?location2 - location)
+        (eating ?unicorn - beast ?cupcake - locatable)
+        (on-plate ?cupcake - cupcake ?plate - plate)
     )
 
     ;define actions here
     (:action pick-up
         :parameters (?arm - bot
-                    ?cupcake - locatable
-                    ?loc - location)
+                     ?cupcake - locatable
+                     ?loc - location)
 
-        :precondition (and 
+        :precondition (and
             (on ?arm ?loc)
             (on ?cupcake ?loc)
             (arm-empty)
         )
-        :effect (and 
+        :effect (and
             (not (on ?cupcake ?loc))
             (holding ?arm ?cupcake)
             (not (arm-empty))
@@ -44,11 +48,11 @@
         :parameters (?arm - bot
                      ?cupcake - locatable
                      ?loc - location)
-        :precondition (and 
+        :precondition (and
             (on ?arm ?loc)
             (holding ?arm ?cupcake)
         )
-        :effect (and 
+        :effect (and
             (on ?cupcake ?loc)
             (arm-empty)
             (not (holding ?arm ?cupcake))
@@ -56,16 +60,31 @@
     )
 
     (:action move
-        :parameters (?arm - bot
+        :parameters (?agent - bot
                      ?from - location
                      ?to - location)
-        :precondition (and 
-            (on ?arm ?from)
+        :precondition (and
+            (on ?agent ?from)
             (path ?from ?to)
         )
-        :effect (and 
-            (not (on ?arm ?from))
-            (on ?arm ?to)    
+        :effect (and
+            (not (on ?agent ?from))
+            (on ?agent ?to)
+        )
+    )
+
+    (:action eat
+        :parameters (?unicorn - beast
+                     ?cupcake - locatable
+                     ?plate - location
+        )
+        :precondition(and
+            (on ?unicorn ?plate)
+            (on ?cupcake ?plate)
+        )
+        :effect(and
+            (not (on ?cupcake ?plate))
+            (eating ?unicorn ?cupcake)
         )
     )
 )
