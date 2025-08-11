@@ -22,7 +22,7 @@
         (arm-empty)
         (path ?location1 - location ?location2 - location)
         (eating ?unicorn - beast ?cupcake - cupcake)
-        (is_plate ?x - loc)
+        (is_plate ?x - location)
     )
 
     ;define actions here

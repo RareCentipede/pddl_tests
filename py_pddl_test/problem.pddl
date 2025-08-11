@@ -1,0 +1,7 @@
+(define (problem problem-1)
+    (:domain my_domain)
+    (:requirements :negative-preconditions :strips :typing)
+    (:objects h j k - type_1)
+    (:init (not (p2 b c)) (p1 a b c))
+    (:goal (p2 b c))
+)
