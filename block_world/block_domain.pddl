@@ -87,7 +87,6 @@
                         (when (and
                                 (at ?below_block ?loc)
                                 (at-top ?below_block)
-                                (on ?block ?below_block)
                               )
                             (and
                                 (not (at-top ?below_block))

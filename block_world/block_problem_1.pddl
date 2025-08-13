@@ -9,14 +9,16 @@
     (:init
         ;todo: put the initial state's facts and numeric values here
         (at rob p0)
+        (at s1 p1)
         (at d1 p1)
         (at d2 p1)
-        (on d2 d1)
         (at d3 p1)
+
+        (on d2 d1)
         (on d3 d2)
-        (at s1 p9)
+        (on d1 s1)
         (at-top d3)
-        (at-top s1)
+
         (gripper-empty)
     )
 

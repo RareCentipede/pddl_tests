@@ -16,3 +16,5 @@ for i in range (10000):
 cubePos, cubeOrn = p.getBasePositionAndOrientation(boxId)
 print(cubePos,cubeOrn)
 p.disconnect()
+
+cmd = "~/downward/fast-downward.py --alias seq-sat-lama-2011 block_domain.pddl block_problem_1.pddl"
